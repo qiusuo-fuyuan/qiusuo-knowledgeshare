@@ -3,6 +3,7 @@
 import socket
 import threading
 from  datastructure import *
+from  RNN import *
 
 class ClientThread(threading.Thread):
     def __init__(self, clientAddress, clientsocket):
@@ -23,7 +24,7 @@ class ClientThread(threading.Thread):
 
             httpRequest = deserialize(msg)
             if httpRequest.url.startswith("/rnn"): 
-                msg = "rnn result"
+                msg = train(httpRequest.message)
 
             """print("from client", msg)"""
             self.csocket.send(bytes(msg, 'UTF-8'))

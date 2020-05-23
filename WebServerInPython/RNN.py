@@ -1,2 +1,2 @@
 def train(input):
-    return "randomModel"
+    return input
