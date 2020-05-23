@@ -10,7 +10,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.listen()
 
     """
-    When socket is accepted, then a new socket with the filled target source ip address and source port are saved
+    When socket is accepted, then a new socket with the filled client source ip address and client port are saved
     into the accepted sockets.
     """
     conn, addr = s.accept()

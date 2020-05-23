@@ -17,6 +17,8 @@ class File:
     def readSync(self):
         """ read from disk and store into buffer"""
         if buffer.length == 0:
+            """send command to disk to read content, this will be executed by the file system driver"""
+            """add current process to wait list"""
             Scheduler.schedule()
     
     def readASync(self):
