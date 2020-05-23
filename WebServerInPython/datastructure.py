@@ -4,12 +4,26 @@ from json import JSONEncoder
 import jsonpickle
 import enum
 
+class Scheduler:
+    ready: Process = []
+    waiting: Process = []
+
+    @staticmethod
+    def schedule():
+        ready[0].run()
 
 class File:
     buffer = []
-    def read(self):
+    def readSync(self):
         """ read from disk and store into buffer"""
+        if buffer.length == 0:
+            Scheduler.schedule()
     
+    def readASync(self):
+        """ read from disk and store into buffer"""
+        if buffer.length == 0:
+            return
+
     def write(self):
         """take data from user space and write to disk"""
 
@@ -18,6 +32,9 @@ class Process:
     sockets = []
     threads = []
     currentExecuteCommand: None
+
+    def run(self):
+        """load address currentExecuteCommand value to cpu"""
 
 class Socket:
     buffer = []
