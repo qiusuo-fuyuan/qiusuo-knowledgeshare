@@ -5,8 +5,8 @@ import jsonpickle
 import enum
 
 class Scheduler:
-    ready: Process = []
-    waiting: Process = []
+    ready = []
+    waiting = []
 
     @staticmethod
     def schedule():
@@ -14,7 +14,7 @@ class Scheduler:
 
 class File:
     buffer = []
-    def readSync(self):
+    def readSync(self): 
         """ read from disk and store into buffer"""
         if buffer.length == 0:
             """send command to disk to read content, this will be executed by the file system driver"""
@@ -33,24 +33,23 @@ class Process:
     files = []
     sockets = []
     threads = []
-    currentExecuteCommand: None
 
     def run(self):
         """load address currentExecuteCommand value to cpu"""
 
 class Socket:
     buffer = []
-    port = None
-    source = None
-    target = None
+    Listeningport = None
+    TargetPort = None
+    sourceAddress = None
+    targetAddress = None
     interface = None
-    process: Process
+    prcess: Process = None
     def read(self):
         """ read from disk and store into buffer"""
     
     def write(self):
         """take data from user space and write to disk"""
-
 
 
 class HttpMethod:
@@ -59,7 +58,7 @@ class HttpMethod:
 
 class RequestURL:
     RNN_TRAIN = "/rnn/train"
-    RNN_PREDICT = "rnn/predict"
+    RNN_PREDICT = "/rnn/predict"
 
 class HttpProtocol:
     method: HttpMethod

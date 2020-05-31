@@ -22,7 +22,6 @@ node
 # Environment
 install the packages from requirement.txt using pip
 ```
-pip install -r requirement.txt
 ```
 
 
