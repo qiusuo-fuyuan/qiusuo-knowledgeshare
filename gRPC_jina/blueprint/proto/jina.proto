@@ -1,0 +1,15 @@
+syntax = "proto3";
+package jina;
+
+message JinaRequest {
+    string message = 1;
+}
+
+message JinaReply {
+    string message = 1;
+}
+
+service Jina {
+    rpc Reply (JinaRequest) returns (JinaReply){}
+    //rpc JinaReply (JinaRequest) returns (JinaReply) {}
+}
