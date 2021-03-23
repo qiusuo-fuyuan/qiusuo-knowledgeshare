@@ -1,6 +1,10 @@
 # Read Me
 
-This is the read me for gRPC. We just wanna create a similar structure to Jina for learning purposes. 
+This is the read me for gRPC. We just wanna create a similar structure to Jina for learning purposes. The gRPC part, we learnt from this tutorial. 
+https://towardsdatascience.com/implementing-grpc-server-using-python-9dc42e8daea0
+
+ZMQ from the official website  https://learning-0mq-with-pyzmq.readthedocs.io/en/latest/pyzmq/patterns/pushpull.html
+
 
 
 
