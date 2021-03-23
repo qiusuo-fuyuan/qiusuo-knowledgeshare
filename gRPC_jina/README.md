@@ -1,6 +1,6 @@
 # Read Me
 
-This is the read me for gRPC
+This is the read me for gRPC. We just wanna create a similar structure to Jina for learning purposes. 
 
 
 
