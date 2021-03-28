@@ -1,8 +1,7 @@
 # app.py
 from concurrent import futures
-import grpc
 import zmq
-
+import grpc
 from .generated import jina_pb2_grpc
 from .grpc import Jinaer
 

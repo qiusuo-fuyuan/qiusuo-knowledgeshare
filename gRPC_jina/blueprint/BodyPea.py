@@ -5,6 +5,7 @@ import time
 Body Pea is the Consumer in ZMQ Pull - Push model
 '''
 
+
 def BodyPea():
     consumer_context = zmq.Context()
     # Connect with Producer
@@ -19,7 +20,8 @@ def BodyPea():
     if message:
         print(message)
     print("Tasks finished!")
-    consumer_sender.send_string("Body Pea has already finished their job")
+    consumer_sender.send_string(str(message, 'utf-8'))
     print("Send back message to gRPC Server")
+
 
 BodyPea()
