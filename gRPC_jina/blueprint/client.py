@@ -6,7 +6,8 @@ import grpc
 from .generated import jina_pb2
 from .generated import jina_pb2_grpc
 
-
+import  multiprocessing 
+import  threading 
 def run():
     with grpc.insecure_channel('localhost:50051') as channel:
         stub = jina_pb2_grpc.JinaStub(channel)
