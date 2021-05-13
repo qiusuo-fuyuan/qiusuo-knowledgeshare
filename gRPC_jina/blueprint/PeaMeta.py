@@ -74,7 +74,7 @@ class PeaType(type):
         _cls = {
             "thread": threading.Thread,
             "process": multiprocessing.Process,
-        }.get(getattr(args[0], "runtime_backend", "thread"))
+        }.get(args[0].get("runtime_backend", "thread"))
         # rebuild the class according to mro
         for c in self.mro()[-2::-1]:
             arg_cls = PeaType._dct[c.__name__]["cls"]

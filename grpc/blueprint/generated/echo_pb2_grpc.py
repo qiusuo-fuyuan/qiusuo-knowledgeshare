@@ -2,9 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-##dot means current folder
-from . import echo_pb2 as echo__pb2
-
+import .echo_pb2 as echo__pb2
 
 class EchoStub(object):
     """The echo service definition.
@@ -30,7 +28,9 @@ class EchoServicer(object):
     def Reply(self, request, context):
         """Echo back reply.
         """
-        return echo__pb2.EchoReply(message=f'You said: {request.message}')
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
 
 
 def add_EchoServicer_to_server(servicer, server):

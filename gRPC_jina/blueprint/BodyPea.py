@@ -14,11 +14,13 @@ Body Pea is the Consumer in ZMQ Pull - Push model
 class BodyPea(metaclass=PeaType):
     def __init__(self, args: "argparse.Namespace"):
         super().__init__()
+        '''
         self.args = args
         self.is_ready = _get_event(self)
         self.is_shutdown = _get_event(self)
         self.ready_or_shutdown = _make_or_event(self, self.is_ready, self.is_shutdown)
         self.name = self.args.name or self.__class__.__name__
+        '''
 
     def run(self):
         consumer_context = zmq.Context()
@@ -39,7 +41,8 @@ class BodyPea(metaclass=PeaType):
         print("Send back message to gRPC Server")
 
     def __enter__(self):
-        return self.start()
+        super().start()
+        return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.close()

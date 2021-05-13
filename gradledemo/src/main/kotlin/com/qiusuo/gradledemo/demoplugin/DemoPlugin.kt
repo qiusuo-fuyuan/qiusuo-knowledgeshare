@@ -1,0 +1,3 @@
+
+class Demoplugin: Plugin<Project> {
+}

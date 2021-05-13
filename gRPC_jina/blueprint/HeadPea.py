@@ -11,12 +11,15 @@ The HeadPea is the Server in ZMQ Client - Server model
 
 
 class Headpeas(metaclass=PeaType):
-    def __init__(self, args: "argparse.Namespace"):
+    def __init__(self, args):
         super().__init__()
+        '''
         self.args = args
         self.is_ready = _get_event(self)
         self.is_shutdown = _get_event(self)
+      
         self.name = self.args.name or self.__class__.__name__
+          '''
 
     def run(self):
         # Initialization in ZMQ for Server in Client - Server
@@ -36,7 +39,8 @@ class Headpeas(metaclass=PeaType):
         producer_socket.send_string(str(server_message, "utf-8"))
 
     def __enter__(self):
-        return self.start()
+        super().start()
+        return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         print("exit")
