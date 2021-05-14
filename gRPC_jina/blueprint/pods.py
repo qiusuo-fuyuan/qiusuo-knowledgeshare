@@ -18,13 +18,13 @@ class PodManager:
         self.num_peas = num_peas
 
     def run(self, num_peas):
-        with Headpeas({'runtime_backend': 'process'}) as hdp:
+        with Headpeas({"runtime_backend": "process"}) as hdp:
             print("headpea is started")
             Event = _get_event(hdp)
             Event.set()
-        if Event.isSet():
+        if Event.is_set():
             for i in range(self.num_peas):
-                pea = BodyPea(Process)
+                pea = BodyPea({"runtime_backend": "process"})
                 pea.start()
 
 
