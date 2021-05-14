@@ -22,10 +22,12 @@ class PodManager:
             print("headpea is started")
             Event = _get_event(hdp)
             Event.set()
-        if Event.is_set():
-            for i in range(self.num_peas):
-                pea = BodyPea({"runtime_backend": "process"})
-                pea.start()
+            if Event.is_set() == True:
+                for i in range(self.num_peas):
+                    pea = BodyPea({"runtime_backend": "process"})
+                    pea.start()
+            else:
+                print("Headpea fail to start,can't start body pea")
 
 
 if __name__ == "__main__":
@@ -33,6 +35,6 @@ if __name__ == "__main__":
     num_peas = 3
     pm = PodManager(num_peas)
     pm.run(num_peas)
-    print("bodypea is running")
+    # print("bodypea is running")
     while 1:
         time.sleep(10)
