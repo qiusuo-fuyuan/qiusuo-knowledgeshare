@@ -10,7 +10,8 @@ ZMQ from the official website  https://learning-0mq-with-pyzmq.readthedocs.io/en
 
 ## Introduction
 
-<img src="./Intro.png" alt="image" style="zoom:50%;" />
+<img src="./jina.png" alt="image" style="zoom:50%;" />
+
 
 1. gRPC client: Only as gRPC client, sending message to gRPC Server to request certain mission.
 
@@ -35,7 +36,7 @@ cd gRPC_jina
 1. Init gRPC Server
 
 ~~~shell
-python blueprint
+python -m blueprint
 ~~~
 
 2. Init Head Pea
