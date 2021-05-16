@@ -18,15 +18,16 @@ class PodManager:
         self.num_peas = num_peas
 
     def run(self, num_peas):
-        with Headpeas({'runtime_backend': 'process'}) as hdp:
+        with Headpeas({"runtime_backend": "process"}) as hdp:
             print("headpea is started")
             Event = _get_event(hdp)
             Event.set()
-        if Event.isSet():
-            for i in range(self.num_peas):
-                pea = BodyPea(Process)
-                pea.start()
-
+            if Event.is_set() == True:
+                for i in range(self.num_peas):
+                    pea = BodyPea({"runtime_backend": "process"})
+                    pea.start()
+            else:
+                print("Headpea fail to start,can't start body pea")
 
 if __name__ == "__main__":
     # pea = BodyPea(Thread)
@@ -34,5 +35,6 @@ if __name__ == "__main__":
     pm = PodManager(num_peas)
     pm.run(num_peas)
     print("bodypea is running")
+    # print("bodypea is running")
     while 1:
         time.sleep(10)
