@@ -11,3 +11,7 @@ https://lwn.net/Articles/626665/
 echo "0 1000 1" > /proc/20822/uid_map
 
 echo "0 0 1\n1 1000 1" > /proc/22704/uid_map
+
+#####print the capablities owned by the current process#####
+grep Cap /proc/$BASHPID/status => these output the capablities 
+capsh --decode=0000003fffffffff
