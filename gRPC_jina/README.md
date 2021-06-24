@@ -10,8 +10,7 @@ ZMQ from the official website  https://learning-0mq-with-pyzmq.readthedocs.io/en
 
 ## Introduction
 
-<img src="./jina.png" alt="image" style="zoom:50%;" />
-
+<img src="./jina.png" alt="image" style="zoom:100%;" />
 
 1. gRPC client: Only as gRPC client, sending message to gRPC Server to request certain mission.
 
@@ -23,7 +22,9 @@ ZMQ from the official website  https://learning-0mq-with-pyzmq.readthedocs.io/en
 
 4. Body Pea: Consumer (in ZMQ Push / Pul Model), will send the message to result collector.
 
+5. Pod: Manage Head Pea and Body Pea
 
+6. Flow: Run pods with yaml file
 
 ## Pipeline:
 
@@ -39,19 +40,13 @@ cd gRPC_jina
 python -m blueprint
 ~~~
 
-2. Init Head Pea
+2. Init Flow
 
 ~~~shell
-python HeadPea.py
+python ./blueprint/myFlow.py
 ~~~
 
-3. Init Body Pea
-
-~~~shell
-python BodyPea.py
-~~~
-
-4. Init gRPC Client and sending message
+3. Init gRPC Client and sending message
 
 ~~~shell
 python -m blueprint.client
@@ -60,12 +55,5 @@ python -m blueprint.client
 
 
 And we will see the result showing!!!
-
-
-
-
-
-
-
 
 

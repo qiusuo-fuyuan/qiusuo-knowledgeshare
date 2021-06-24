@@ -1,0 +1,12 @@
+1. class Executor  -->
+    yamlJina.py  [metaclass:JamlType; class:BaseJaml ]    func:register_class
+    Executor.py  [class:ExecutorType  class:BaseExecutor]
+2. turn the Executor into yaml file
+3. load the yaml file into python object and run it
+4. define the class Flow 
+5. run the flow
+
+
+keys: 
+register_class  @Executor
+wrap_func 

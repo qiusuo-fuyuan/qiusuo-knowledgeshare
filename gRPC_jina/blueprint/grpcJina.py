@@ -15,7 +15,7 @@ class Jinaer(jina_pb2_grpc.JinaServicer):
         # Set up ZMQ Push/Pull Communication:
         # Result Collector: 3737
         # print("ZMQ Result Collector Ready!")
-        print('grpcServer received message:' + requst.message)
+        print("grpcServer received message:" + requst.message)
         context = zmq.Context()
         results_receiver = context.socket(zmq.PULL)
         results_receiver.bind("tcp://127.0.0.1:3737")

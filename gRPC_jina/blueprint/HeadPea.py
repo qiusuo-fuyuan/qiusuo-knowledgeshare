@@ -13,13 +13,12 @@ The HeadPea is the Server in ZMQ Client - Server model
 class Headpeas(metaclass=PeaType):
     def __init__(self, args):
         super().__init__()
-        '''
-        self.args = args
         self.is_ready = _get_event(self)
         self.is_shutdown = _get_event(self)
-      
+        """
+        self.args = args
         self.name = self.args.name or self.__class__.__name__
-          '''
+          """
 
     def run(self):
         # Initialization in ZMQ for Server in Client - Server
@@ -34,7 +33,8 @@ class Headpeas(metaclass=PeaType):
         producer_context = zmq.Context()
         producer_socket = producer_context.socket(zmq.PUSH)
         producer_socket.bind("tcp://127.0.0.1:2626")
-
+        self.is_ready.set()
+        print("Event is set")
         # Send the message to the consumer
         producer_socket.send_string(str(server_message, "utf-8"))
 

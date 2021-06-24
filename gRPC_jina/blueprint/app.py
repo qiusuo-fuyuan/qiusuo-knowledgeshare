@@ -3,7 +3,7 @@ from concurrent import futures
 import zmq
 import grpc
 from .generated import jina_pb2_grpc
-from .grpc import Jinaer
+from .grpcJina import Jinaer
 
 
 class Server:
@@ -18,6 +18,7 @@ class Server:
         context = zmq.Context()
         results_receiver = context.socket(zmq.PULL)
         results_receiver.bind("tcp://127.0.0.1:3333")
+
         message_from_consumer = results_receiver.recv()
         if message_from_consumer:
             print("Already received the message from Consumer (BodyPea)")
