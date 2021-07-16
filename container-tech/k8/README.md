@@ -14,3 +14,6 @@ API Server is running on the master node of cluster
 
 root@minikube:/# docker ps | grep kube-apiserver
 f7effb9eb8ba   ca9843d3b545           "kube-apiserver --ad…"   7 hours ago   Up 7 hours             k8s_kube-apiserver_kube-apiserver-minikube_kube-system_524cecac593a7ad14f29307cb61f56b8_5
+
+
+By default, there is one Cluster, this Cluster uses the Minikube as the node. In one node, there can be multiple pods running.

@@ -1,3 +1,7 @@
+'''
+If you think carefully, you will know that Python decorators will be executed
+during python loading of the script file.
+'''
 def uppercase_decorator(function):
     print("decorator being executed")
     def wrapper():
