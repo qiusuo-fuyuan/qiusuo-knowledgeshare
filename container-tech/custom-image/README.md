@@ -21,3 +21,8 @@ ls merged => you will find that there are two files in the merged folder
 
 
 What you see is not really what it is. Merging folder is just showing two inodes from two different folder.
+
+cat /proc/self/mountinfo => will output the detailed mount information. The weird thing is that
+output of mount command is different from the /proc/self/mountinfo
+
+mountinfo shows that dockedr mounts the host folder into the target directory.

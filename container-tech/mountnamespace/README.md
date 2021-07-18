@@ -23,8 +23,5 @@ export CONTAINER_ROOT_FOLDER=/container_practice
 mount --bind ${CONTAINER_ROOT_FOLDER}/fakeroot ${CONTAINER_ROOT_FOLDER}/fakeroot
 cd ${CONTAINER_ROOT_FOLDER}/fakeroot
 
-//this will change the root
-mkdir old_root
-pivot_root . old_root
-PATH=/bin:/sbin:$PATH
-umount -l /old_root => /proc is not available in the new user namespace.
+We just have mount the new /fakeroot to the root folder. After that we also have to 
+mount the /proc
