@@ -1,5 +1,5 @@
 This tutorial contains the analysis of how K8 Pod, Services, Deployments work
-on local system
+on local system. The goal is able to access cluster via Cluster-IP from host
 
 
 
@@ -17,3 +17,4 @@ f7effb9eb8ba   ca9843d3b545           "kube-apiserver --ad…"   7 hours ago   U
 
 
 By default, there is one Cluster, this Cluster uses the Minikube as the node. In one node, there can be multiple pods running.
+

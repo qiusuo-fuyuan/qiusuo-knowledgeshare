@@ -1,0 +1,85 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: local-storage
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: WaitForFirstConsumer
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: flask-app-volume
+  labels:
+    type: local
+    environment : dev
+spec:
+  storageClassName: local-storage
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/qiusuo-data"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: myflask-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: local-storage
+  selector:
+    matchLabels:
+      type: local
+    matchExpressions:
+      - {key: environment, operator: In, values: [dev]}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myflask-depl
+  labels:
+    app: myflask
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: myflask
+  template:
+    metadata:
+      name: myflask-pod
+      labels:
+        app: myflask
+    spec:
+      volumes:
+      - name: data-folder
+        persistentVolumeClaim: 
+          claimName: myflask-claim
+      containers:
+      - name: myflask-app
+        image: myflask:v1
+        volumeMounts:
+        - name: data-folder
+          mountPath: /flask/env
+      dnsPolicy: Default
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: myflask-service
+spec:
+  ports:
+    - name: 5000-5000
+      port: 5000
+      protocol: TCP
+      targetPort: 5000
+  selector:
+    app: myflask
+  sessionAffinity: None
+  type: NodePort
